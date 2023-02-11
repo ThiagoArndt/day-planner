@@ -1,12 +1,14 @@
 import { MongoClient } from "mongodb";
-import database from "../settings";
+
 const ObjectId = require("mongodb").ObjectId;
+
+const connectionString = `mongodb+srv://${process.env.mongodb_username}:${process.env.mongodb_password}@${process.env.mongodb_clustername}.sm06n60.mongodb.net/${process.env.mongodb_database}?retryWrites=true&w=majority`;
+
+
 
 //Connect to MongoDB
 export async function connectDatabase() {
-  const client = await MongoClient.connect(
-    `mongodb+srv://${database.username}:${database.password}@cluster0.sm06n60.mongodb.net/${database.dbName}?retryWrites=true&w=majority`
-  );
+  const client = await MongoClient.connect(connectionString);
 
   return client;
 }
@@ -18,7 +20,7 @@ export async function getAllDocuments(client, sort) {
   const db = client.db();
 
   const documents = await db
-    .collection(database.dbCollection)
+    .collection('chores')
     .find()
     .sort(sort)
     .toArray();
@@ -32,7 +34,7 @@ export async function getAllDocuments(client, sort) {
 export async function insertDocument(client, document) {
   const db = client.db();
 
-  const result = await db.collection(database.dbCollection).insertOne(document);
+  const result = await db.collection('chores').insertOne(document);
   return result;
 }
 
@@ -43,7 +45,7 @@ export async function deleteDocument(client, id) {
   const db = client.db();
 
   const result = await db
-    .collection(database.dbCollection)
+    .collection('chores')
     .deleteOne({ _id: ObjectId(id) });
   return result;
 }
@@ -54,7 +56,7 @@ export async function deleteDocument(client, id) {
 export async function updateDocument(client, id, updatedData) {
   const db = client.db();
 
-  const result = await db.collection(database.dbCollection).updateOne(
+  const result = await db.collection('chores').updateOne(
     { _id: ObjectId(id) },
     {
       $set: {
