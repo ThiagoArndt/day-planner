@@ -88,7 +88,7 @@ async function handler(req, res) {
       title: title,
       isDone: isDone,
     };
-    console.log(updatedData);
+   
     let result;
 
     try {
