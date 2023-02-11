@@ -9,7 +9,6 @@
   },
   "dependencies": {
     "@adobe/react-spectrum": "^3.22.0",
-    "@cantonjs/react-scroll-view": "^0.4.2",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
     "@fortawesome/react-fontawesome": "^0.2.0",
@@ -17,13 +16,9 @@
     "intersection-observer": "^0.12.2",
     "mongodb": "^4.11.0",
     "next": "10.0.6",
-    "nextjs-progressbar": "^0.0.16",
     "react": "17.0.1",
-    "react-custom-scrollbars-2": "^4.5.0",
     "react-dom": "17.0.1",
     "react-icons": "^4.6.0",
-    "react-indiana-drag-scroll": "^2.2.0",
-    "react-scrollbars-custom": "^4.1.1",
     "swr": "^0.4.2"
   },
   "devDependencies": {
